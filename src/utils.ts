@@ -21,7 +21,12 @@ export function prettify(connectors: Connectors) {
 
     for (const field of Object.keys(connector)) {
       const content = connector[field];
-      connector[field] = prettier.format(content, config);
+
+      try {
+        connector[field] = prettier.format(content, config);
+      } catch (e) {
+        console.error(e);
+      }
     }
   }
 

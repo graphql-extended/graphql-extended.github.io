@@ -1,8 +1,8 @@
 import * as React from 'react';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Highlight from 'react-highlight';
 import { Connectors } from 'gqlx-js';
 import { Typography, ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
-import { TextEditor } from './Editor';
 
 export interface ConnectorListProps {
   value: Connectors;
@@ -14,22 +14,19 @@ const detailsStyle: React.CSSProperties = {
 
 export const ConnectorList: React.SFC<ConnectorListProps> = ({ value }) => (
   <>
-    {Object.keys(value).map(key => (
-      <ExpansionPanel key={key}>
-        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>{key}</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails style={detailsStyle}>
-          {Object.keys(value[key]).map(field => (
-            <div key={field}>
-              <Typography component="h3" variant="h5">
-                {field}
-              </Typography>
-              <TextEditor readOnly value={value[key][field]} mode="js" height="140px" />
-            </div>
-          ))}
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-    ))}
+    {Object.keys(value).map(key =>
+      Object.keys(value[key]).map(field => (
+        <ExpansionPanel key={`${key}-${field}`}>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography>
+              {key} &middot; {field}
+            </Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails style={detailsStyle}>
+            <Highlight className="js">{value[key][field]}</Highlight>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+      )),
+    )}
   </>
 );

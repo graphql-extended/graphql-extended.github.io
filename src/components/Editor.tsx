@@ -3,6 +3,7 @@ import AceEditor from 'react-ace';
 import { EditorAnnotation } from '../types';
 
 const editorStyle: React.CSSProperties = {
+  flexGrow: 1,
   position: 'relative',
 };
 
@@ -11,6 +12,7 @@ const editor = {
 };
 
 const options = {
+  autoScrollEditorIntoView: true,
   enableBasicAutocompletion: true,
   enableLiveAutocompletion: false,
   enableSnippets: false,
@@ -27,23 +29,54 @@ export interface TextEditorProps {
   onChange?(value: string): void;
 }
 
-export const TextEditor: React.SFC<TextEditorProps> = ({ mode, value, height, onChange, readOnly, annotations }) => (
-  <div style={editorStyle}>
-    <AceEditor
-      mode={mode}
-      theme="tomorrow"
-      annotations={annotations}
-      onChange={onChange}
-      height={height}
-      fontSize={14}
-      showPrintMargin
-      width="100%"
-      showGutter
-      highlightActiveLine
-      readOnly={readOnly}
-      value={value}
-      editorProps={editor}
-      setOptions={options}
-    />
-  </div>
-);
+export class TextEditor extends React.Component<TextEditorProps> {
+  private editor: any;
+
+  private setEditor = (el: any) => {
+    this.editor = el && el.editor;
+    this.resized();
+  };
+
+  private resized = () => {
+    const { editor } = this;
+
+    if (editor) {
+      const container = editor.container.parentElement;
+      container.style.height = `${~~container.getBoundingClientRect().height}px`;
+      editor.resize();
+    }
+  };
+
+  componentDidMount() {
+    window.addEventListener('resize', this.resized);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.resized);
+  }
+
+  render() {
+    const { mode, value, height, onChange, readOnly, annotations } = this.props;
+    return (
+      <div style={editorStyle}>
+        <AceEditor
+          mode={mode}
+          theme="tomorrow"
+          annotations={annotations}
+          onChange={onChange}
+          height={height}
+          fontSize={14}
+          showPrintMargin
+          width="100%"
+          showGutter
+          highlightActiveLine
+          readOnly={readOnly}
+          value={value}
+          ref={this.setEditor}
+          editorProps={editor}
+          setOptions={options}
+        />
+      </div>
+    );
+  }
+}

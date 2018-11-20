@@ -40,8 +40,7 @@ export class Content extends React.Component<ContentProps, ContentState> {
   private changeSchema = (source: string) => {
     try {
       const gql = utils.parseDynamicSchema(source);
-      //TODO enable when there are better error messages (incl. position)
-      //utils.validate(gql, defaultApi);
+      utils.validate(gql, defaultApi);
       const connectors = prettify(utils.transform(gql, defaultApi));
       const schema = gql.schema.text;
       this.setState({
@@ -82,7 +81,7 @@ export class Content extends React.Component<ContentProps, ContentState> {
             onChange={this.changeSchema}
             value={source}
             mode="graphqlschema"
-            annotations={annotations}
+            remarks={annotations}
             height="100%"
           />
         </Grid>

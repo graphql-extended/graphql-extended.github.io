@@ -4,8 +4,6 @@ import { EditorAnnotation, GraphQLError } from './types';
 const prettier: any = require('prettier/standalone');
 const plugins = [require('prettier/parser-babylon')];
 
-const getPositionRegex = /\((\d+)\:(\d+)\)/;
-
 export function prettify(connectors: Connectors) {
   const config = {
     printWidth: 80,
@@ -36,26 +34,23 @@ export function prettify(connectors: Connectors) {
 export function getAnnotations(error: any): Array<EditorAnnotation> {
   const gqlError = error as GraphQLError;
 
-  if (gqlError.locations) {
-    return gqlError.locations.map(m => ({
-      row: m.line - 1,
-      column: m.column - 1,
-      text: gqlError.message,
-      type: 'error',
-    }));
-  } else if (error instanceof Error) {
-    const position = getPositionRegex.exec(error.message);
+  if (gqlError.range) {
+    const [start, end] = gqlError.range;
+    const text = gqlError.message;
+    const row = gqlError.line - 1;
+    const col = gqlError.column - 1;
+    const len = end - start;
 
-    if (position) {
-      return [
-        {
-          row: +position[1] - 1,
-          column: +position[2] - 1,
-          text: error.message,
-          type: 'error',
-        },
-      ];
-    }
+    return [
+      {
+        startColumn: col,
+        endColumn: col + len,
+        endRow: row,
+        startRow: row,
+        text,
+        type: 'error',
+      },
+    ];
   }
 
   return [];

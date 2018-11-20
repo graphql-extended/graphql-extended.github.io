@@ -1,13 +1,14 @@
 export interface EditorAnnotation {
-  row: number;
-  column: number;
+  startRow: number;
+  startColumn: number;
+  endRow: number;
+  endColumn: number;
   type: string;
   text: string;
 }
 
 export interface GraphQLError extends Error {
-  locations: Array<{
-    column: number;
-    line: number;
-  }>;
+  range: [number, number];
+  line: number;
+  column: number;
 }

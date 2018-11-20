@@ -1,5 +1,5 @@
 import * as React from 'react';
-import AceEditor from 'react-ace';
+import AceEditor, { Marker, Annotation } from 'react-ace';
 import { EditorAnnotation } from '../types';
 
 const editorStyle: React.CSSProperties = {
@@ -25,7 +25,7 @@ export interface TextEditorProps {
   value: string;
   height?: string;
   readOnly?: boolean;
-  annotations?: Array<EditorAnnotation>;
+  remarks?: Array<EditorAnnotation>;
   onChange?(value: string): void;
 }
 
@@ -56,13 +56,28 @@ export class TextEditor extends React.Component<TextEditorProps> {
   }
 
   render() {
-    const { mode, value, height, onChange, readOnly, annotations } = this.props;
+    const { mode, value, height, onChange, readOnly, remarks = [] } = this.props;
+    const annotations = remarks.map<Annotation>(rem => ({
+      column: rem.startColumn,
+      row: rem.startRow,
+      text: rem.text,
+      type: rem.type,
+    }));
+    const markers = remarks.map<Marker>(rem => ({
+      className: `${rem.type}-marker`,
+      startCol: rem.startColumn,
+      endCol: rem.endColumn,
+      endRow: rem.endRow,
+      startRow: rem.startRow,
+      type: 'background',
+    }));
     return (
       <div style={editorStyle}>
         <AceEditor
           mode={mode}
           theme="tomorrow"
           annotations={annotations}
+          markers={markers}
           onChange={onChange}
           height={height}
           fontSize={14}

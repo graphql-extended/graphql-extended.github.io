@@ -1,6 +1,6 @@
 {
   "name": "graphql-extended.github.io",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A small web providing a window to GQLX",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -25,6 +25,7 @@
   "homepage": "https://graphql-extended.github.io",
   "devDependencies": {
     "@types/graphql": "^14.0.2",
+    "@types/highlight.js": "^9.12.3",
     "@types/prettier": "^1.13.2",
     "@types/react": "^16.4.16",
     "@types/react-dom": "^16.0.9",
@@ -41,9 +42,8 @@
   "dependencies": {
     "@material-ui/core": "^3.2.2",
     "@material-ui/icons": "^3.0.1",
-    "@types/highlight.js": "^9.12.3",
     "babel-polyfill": "^6.26.0",
-    "gqlx-js": "^0.1.5",
+    "gqlx-js": "^0.2.0",
     "graphql": "^14.0.2",
     "prettier": "^1.14.3",
     "react": "^16.5.2",

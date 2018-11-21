@@ -20,5 +20,5 @@ steps:
     git config user.email "gqlx@florian-rappl.de" 
     git config user.name "Florian Rappl"
     npm install
-    npm run deploy -- -r https://$(variables.github_pat)@github.com/graphql-extended/graphql-extended.github.io.git
+    npm run deploy -- -r https://$(github_pat)@github.com/graphql-extended/graphql-extended.github.io.git
   displayName: 'npm install and build'

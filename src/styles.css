@@ -4,7 +4,7 @@
 }
 
 .github-corner:hover .octo-arm {
-  animation:octocat-wave 560ms ease-in-out
+  animation: octocat-wave 560ms ease-in-out;
 }
 
 @keyframes octocat-wave {
@@ -25,5 +25,49 @@
   }
   .github-corner .octo-arm{
     animation: octocat-wave 560ms ease-in-out
+  }
+}
+
+.lds-message {
+  color: #70B7FD;
+  font-size: 1rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.0075em;
+}
+
+.app-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+}
+
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #70B7FD;
+  border-color: #70B7FD transparent #70B7FD transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

@@ -8,7 +8,7 @@
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "noImplicitReturns": true,
-    "module": "commonjs",
+    "module": "esnext",
     "target": "es6",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,

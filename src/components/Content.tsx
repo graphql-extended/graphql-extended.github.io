@@ -24,7 +24,7 @@ export interface ContentState {
   selected: number;
 }
 
-export class Content extends React.Component<ContentProps, ContentState> {
+export default class Content extends React.Component<ContentProps, ContentState> {
   constructor(props: ContentProps) {
     super(props);
     this.state = {

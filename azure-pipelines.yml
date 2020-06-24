@@ -14,10 +14,10 @@ steps:
   persistCredentials: true
 - task: NodeTool@0
   inputs:
-    versionSpec: '8.x'
+    versionSpec: '10.x'
   displayName: 'Install Node.js'
 - script: |
-    git config user.email "gqlx@florian-rappl.de" 
+    git config user.email "gqlx@florian-rappl.de"
     git config user.name "Florian Rappl"
     npm install
     npm run deploy -- -r https://$(github_pat)@github.com/graphql-extended/graphql-extended.github.io.git

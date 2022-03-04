@@ -1,5 +1,5 @@
 # graphql-extended.github.io
 
-[![Build Status](https://florianrappl.visualstudio.com/gqlx-webapp/_apis/build/status/graphql-extended.graphql-extended.github.io)](https://florianrappl.visualstudio.com/gqlx-webapp/_build/latest?definitionId=2)
+[![Build CI](https://github.com/graphql-extended/graphql-extended.graphql-extended.github.io/actions/workflows/publish.yml/badge.svg?branch=source)](https://github.com/graphql-extended/graphql-extended.graphql-extended.github.io/actions/workflows/publish.yml)
 
 Webpage with playground for GraphQL eXtended.

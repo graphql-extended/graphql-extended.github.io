@@ -1,6 +1,6 @@
 {
   "name": "graphql-extended.github.io",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "A small web providing a window to GQLX",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -15,7 +15,7 @@
   },
   "keywords": [],
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=12.0.0"
   },
   "author": "graphql-extended <gqlx@anglevisions.com>",
   "license": "MIT",
@@ -24,34 +24,33 @@
   },
   "homepage": "https://graphql-extended.github.io",
   "devDependencies": {
-    "@types/graphql": "^14.5.0",
     "@types/highlight.js": "^9.12.4",
     "@types/prettier": "^1.19.1",
-    "@types/react": "^16.9.52",
-    "@types/react-dom": "^16.9.8",
-    "@types/react-highlight": "^0.12.2",
-    "@types/react-router": "^5.1.8",
-    "@types/react-router-dom": "^4.3.5",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-highlight": "^0.12.5",
+    "@types/react-router": "^5.1.18",
+    "@types/react-router-dom": "^5.0.0",
     "gh-pages": "^2.2.0",
-    "parcel-bundler": "^1.12.4",
+    "parcel-bundler": "^1.12.5",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.3.0",
-    "typescript": "^3.9.5"
+    "typescript": "^4.6.2"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
+    "@material-ui/icons": "^4.11.2",
     "babel-polyfill": "^6.26.0",
-    "gqlx-js": "^0.2.10",
-    "graphql": "^14.7.0",
+    "gqlx-js": "^0.3.0",
+    "graphql": "^16.0.0",
     "prettier": "^1.19.1",
-    "react": "^16.14.0",
+    "react": "^17.0.0",
     "react-ace": "^7.0.5",
-    "react-dom": "^16.14.0",
-    "react-highlight": "^0.12.0",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0"
+    "react-dom": "^17.0.0",
+    "react-highlight": "^0.14.0",
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5.3.0"
   },
   "resolutions": {
     "node-fetch": "2.6.1",
